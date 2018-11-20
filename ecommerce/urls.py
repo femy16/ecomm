@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from accounts.views import signup,show_profile
-from products.views import product_list
+from products.views import product_list,product_details
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +26,6 @@ urlpatterns = [
     path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/signup/', signup, name='signup'),
     path('accounts/profile', show_profile, name='show_profile'),
-    
+    path('product_details/<int:id>',product_details,name='product_details'),
+    path('media/<path:path>',serve,{'document_root':settings.MEDIA_ROOT}),
 ]
