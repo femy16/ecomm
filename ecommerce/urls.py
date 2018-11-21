@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from accounts.views import signup,show_profile
 from products.views import product_list,product_details
+from cart.views import add_to_cart,view_cart,remove_item
 from django.views.static import serve
 from django.conf import settings
 
@@ -28,4 +29,7 @@ urlpatterns = [
     path('accounts/profile', show_profile, name='show_profile'),
     path('product_details/<int:id>',product_details,name='product_details'),
     path('media/<path:path>',serve,{'document_root':settings.MEDIA_ROOT}),
+    path('cart/add',add_to_cart,name='add_to_cart'),
+    path('cart/view_cart',view_cart,name='view_cart'),
+    path('cart/remove/<int:id>',remove_item,name='remove_item')
 ]

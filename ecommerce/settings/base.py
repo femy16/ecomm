@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['ecommerce-femystephen.c9users.io','app-ecomapp.herokuapp.com']
 INSTALLED_APPS = [
     'products',
     'accounts',
+    'cart',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'cart.contexts.items_in_cart'
             ],
         },
     },
