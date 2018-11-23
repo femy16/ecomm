@@ -18,6 +18,8 @@ from django.urls import path,include
 from accounts.views import signup,show_profile
 from products.views import product_list,product_details
 from cart.views import add_to_cart,view_cart,remove_item
+from checkout.views import checkout_show,submit_payment
+from reviews.views import make_review
 from django.views.static import serve
 from django.conf import settings
 
@@ -31,5 +33,8 @@ urlpatterns = [
     path('media/<path:path>',serve,{'document_root':settings.MEDIA_ROOT}),
     path('cart/add',add_to_cart,name='add_to_cart'),
     path('cart/view_cart',view_cart,name='view_cart'),
-    path('cart/remove/<int:id>',remove_item,name='remove_item')
-]
+    path('cart/remove/<int:id>',remove_item,name='remove_item'),
+    path('checkout/',checkout_show,name='checkout_show'),
+    path('checkout/pay',submit_payment,name='submit_payment'),
+    path('product_details/reviews/<int:id>',make_review,name='make_review'),
+   ]
